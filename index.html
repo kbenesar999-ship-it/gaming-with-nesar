@@ -77,6 +77,9 @@
             font-weight: 600;
             box-shadow: inset 0 -4px 0px rgba(0, 0, 0, 0.15);
             transition: transform 0.1s ease;
+            cursor: pointer;
+            border: none;
+            width: 100%;
         }
 
         .btn-link:active {
@@ -87,14 +90,110 @@
             margin-right: 10px;
             font-size: 18px;
         }
+
+        /* Payment Pop-up (Modal) Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .modal-content {
+            background-color: #111111;
+            border: 3px solid #e2136e; /* bKash Color */
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 0 25px rgba(226, 19, 110, 0.5);
+            position: relative;
+        }
+
+        .bkash-logo {
+            width: 120px;
+            margin-bottom: 15px;
+        }
+
+        .modal h3 {
+            margin-top: 0;
+            color: #e2136e;
+            font-size: 22px;
+        }
+
+        .payment-instructions {
+            background: #222;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            text-align: left;
+            border-left: 4px solid #ffcc00;
+        }
+
+        .payment-instructions strong {
+            color: #ffcc00;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background-color: #222;
+            color: #fff;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        .modal input:focus {
+            border-color: #e2136e;
+            outline: none;
+        }
+
+        .btn-submit {
+            background-color: #e2136e;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-family: 'Teko', sans-serif;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            letter-spacing: 1px;
+        }
+
+        .btn-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #aaa;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .btn-close:hover {
+            color: #fff;
+        }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
         <div class="avatar-box">
-            <!-- তোমার নতুন ইটাচি লোগোটি এখানে গিটহাবের সোর্স ফাইল থেকে যুক্ত করা হয়েছে -->
-            <img src="1000071671.jpg" alt="Gaming With Nesar Logo">
+            <img src="https://kbenesar999-ship-it.github.io/gaming-with-nesar/1000071671.jpg" alt="Gaming With Nesar Logo">
         </div>
 
         <p class="description">
@@ -103,21 +202,86 @@
 
         <div class="title-bar">MY ALL FILES DOWNLOAD BUTTON</div>
 
-        <!-- ১ নম্বর বাটন -->
-        <a href="https://www.mediafire.com/file/ujzv1mythj8e3i3/WALLHACK_GLOO_100%2525_By_MR_TOM.zip/file" class="btn-link"><i class="fa-solid fa-download"></i> DOWNLOAD Wallhack FFmax</a>
+        <!-- নতুন দামসহ আপডেট করা বাটনসমূহ -->
+        <button class="btn-link" onclick="openPayment('Wallhack FFmax', '80')"><i class="fa-solid fa-download"></i> DOWNLOAD Wallhack FFmax</button>
 
-        <!-- ২ নম্বর বাটন -->
-        <a href="https://www.mediafire.com/file/400kp59zv2b1rrr/%25F0%259F%2594%25A5HOLOGR%25E2%2588%2586M_FF_MAX.zip/file" class="btn-link"><i class="fa-solid fa-download"></i> DOWNLOAD Hologram FFmax</a>
+        <button class="btn-link" onclick="openPayment('Hologram FFmax', '100')"><i class="fa-solid fa-download"></i> DOWNLOAD Hologram FFmax</button>
 
-        <!-- ৩ নম্বর বাটন -->
-        <a href="https://www.mediafire.com/file/jzaugd4u6xzmcqe/app-release-v53.zip/file" class="btn-link"><i class="fa-solid fa-download"></i> DOWNLOAD Fake Ninja</a>
+        <button class="btn-link" onclick="openPayment('Fake Ninja', '50')"><i class="fa-solid fa-download"></i> DOWNLOAD Fake Ninja</button>
 
-        <!-- ৪ নম্বর বাটন -->
-        <a href="https://www.mediafire.com/file/1ldjdfr94f0tcdf/localconfig.json/file" class="btn-link"><i class="fa-solid fa-download"></i> DOWNLOAD FF Proxy</a>
+        <button class="btn-link" onclick="openPayment('FF Proxy', '40')"><i class="fa-solid fa-download"></i> DOWNLOAD FF Proxy</button>
 
-        <!-- ৫ নম্বর বাটন -->
-        <a href="https://www.mediafire.com/file/okvichy22odrvdw/KEN_MOD_Z_OB53_V27_AO_SIEU_HUNG_A_FF_THUONG_ADR.zip/file" class="btn-link"><i class="fa-solid fa-download"></i> DOWNLOAD Dress Glitch</a>
+        <button class="btn-link" onclick="openPayment('Dress Glitch', '20')"><i class="fa-solid fa-download"></i> DOWNLOAD Dress Glitch</button>
     </div>
+
+    <!-- বিকাশ পেমেন্ট পপ-আপ বক্স -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="btn-close" onclick="closePayment()">&times;</span>
+            <img src="https://getlogo.net/wp-content/uploads/2021/01/bkash-logo-vector.png" alt="bKash" class="bkash-logo">
+            <h3>bKash Manual Payment</h3>
+            
+            <div class="payment-instructions">
+                ১. আপনার বিকাশ অ্যাপ থেকে নিচের নাম্বারে <strong>Send Money</strong> করুন।<br>
+                বিকাশ নাম্বার: <strong>017XXXXXXXX (Personal)</strong><br>
+                টাকার পরিমাণ: <strong id="filePrice">0</strong> টাকা।<br>
+                ২. টাকা পাঠানোর পর নিচের বক্সে আপনার তথ্য দিন।
+            </div>
+
+            <input type="hidden" id="selectedFileName">
+            <input type="text" id="userNumber" placeholder="আপনার বিকাশ নাম্বার (যেটি থেকে টাকা পাঠিয়েছেন)" required>
+            <input type="text" id="userTxid" placeholder="Transaction ID (TxID)" required>
+            
+            <button class="btn-submit" onclick="submitPayment()">SUBMIT ORDER</button>
+        </div>
+    </div>
+
+    <script>
+        function openPayment(fileName, price) {
+            document.getElementById('selectedFileName').value = fileName;
+            document.getElementById('filePrice').innerText = price;
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closePayment() {
+            document.getElementById('paymentModal').style.display = 'none';
+            document.getElementById('userNumber').value = '';
+            document.getElementById('userTxid').value = '';
+        }
+
+        function submitPayment() {
+            var fileName = document.getElementById('selectedFileName').value;
+            var price = document.getElementById('filePrice').innerText;
+            var userNumber = document.getElementById('userNumber').value;
+            var userTxid = document.getElementById('userTxid').value;
+
+            if(userNumber == "" || userTxid == "") {
+                alert("দয়া করে সব তথ্য সঠিকভাবে পূরণ করুন!");
+                return;
+            }
+
+            // CRITICAL: নিচের 'YOUR_NUMBER_HERE' পরিবর্তন করে তোমার আসল WhatsApp নাম্বার বসাও (যেমন: 8801712345678)
+            var whatsappNumber = "YOUR_NUMBER_HERE"; 
+            
+            var textMessage = "Hello Nesar, I want to buy a file.%0A%0A" +
+                              "**File Name:** " + fileName + "%0A" +
+                              "**Price:** " + price + " Taka%0A" +
+                              "**My bKash Number:** " + userNumber + "%0A" +
+                              "**Transaction ID (TxID):** " + userTxid;
+
+            var whatsappUrl = "https://wa.me/" + whatsappNumber + "?text=" + textMessage;
+            
+            window.open(whatsappUrl, '_blank');
+            closePayment();
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById('paymentModal');
+            if (event.target == modal) {
+                closePayment();
+            }
+        }
+    </script>
 
 </body>
 </html>

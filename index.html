@@ -202,7 +202,6 @@
 
         <div class="title-bar">MY ALL FILES DOWNLOAD BUTTON</div>
 
-        <!-- নতুন দামসহ আপডেট করা বাটনসমূহ -->
         <button class="btn-link" onclick="openPayment('Wallhack FFmax', '80')"><i class="fa-solid fa-download"></i> DOWNLOAD Wallhack FFmax</button>
 
         <button class="btn-link" onclick="openPayment('Hologram FFmax', '100')"><i class="fa-solid fa-download"></i> DOWNLOAD Hologram FFmax</button>
@@ -260,14 +259,14 @@
                 return;
             }
 
-            // CRITICAL: নিচের 'YOUR_NUMBER_HERE' পরিবর্তন করে তোমার আসল WhatsApp নাম্বার বসাও (যেমন: 8801712345678)
-            var whatsappNumber = "01920312083"; 
+            // তোমার হোয়াটসঅ্যাপ নাম্বারটি কান্ট্রি কোডসহ বসানো হয়েছে
+            var whatsappNumber = "8801920312083"; 
             
             var textMessage = "Hello Nesar, I want to buy a file.%0A%0A" +
-                              "**File Name:** " + fileName + "%0A" +
-                              "**Price:** " + price + " Taka%0A" +
-                              "**My bKash Number:** " + userNumber + "%0A" +
-                              "**Transaction ID (TxID):** " + userTxid;
+                              "*File Name:* " + fileName + "%0A" +
+                              "*Price:* " + price + " Taka%0A" +
+                              "*My bKash Number:* " + userNumber + "%0A" +
+                              "*Transaction ID (TxID):* " + userTxid;
 
             var whatsappUrl = "https://wa.me/" + whatsappNumber + "?text=" + textMessage;
             

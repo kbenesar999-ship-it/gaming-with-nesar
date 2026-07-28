@@ -10,80 +10,125 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #000000;
+            background-color: #08080c;
             color: #ffffff;
             font-family: 'Ubuntu', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
+            min-height: 100vh;
         }
 
         .wrapper {
             width: 100%;
             max-width: 450px;
             min-height: 100vh;
-            border-left: 5px solid #ffcc00;
-            border-right: 5px solid #ffcc00;
-            box-sizing: border-box;
+            border-left: 2px solid #ffcc00;
+            border-right: 2px solid #ffcc00;
             padding: 40px 15px;
             text-align: center;
+            background: radial-gradient(circle at top, #151520 0%, #08080c 100%);
+            box-shadow: 0 0 25px rgba(255, 204, 0, 0.15);
         }
 
+        /* Animated Avatar Ring */
         .avatar-box {
+            position: relative;
             width: 110px;
             height: 110px;
             margin: 0 auto 20px auto;
             border-radius: 50%;
-            border: 3px solid #ffcc00;
-            box-shadow: 0 0 20px #ffcc00;
-            overflow: hidden;
+            padding: 3px;
+            background: linear-gradient(45deg, #ffcc00, #ff0055);
+            box-shadow: 0 0 25px rgba(255, 204, 0, 0.5);
         }
 
         .avatar-box img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 50%;
         }
 
         .description {
-            font-size: 15px;
-            line-height: 1.4;
+            font-size: 14px;
+            line-height: 1.5;
             margin-bottom: 25px;
-            font-weight: bold;
+            color: #d0d0e0;
         }
 
         .title-bar {
             font-family: 'Teko', sans-serif;
             color: #ffcc00;
-            font-size: 24px;
+            font-size: 26px;
             letter-spacing: 1.5px;
             margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+        }
+
+        .btn-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Glowing & Rotating Border Animated Button */
+        .animated-btn-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            padding: 2px;
+            background: #111;
+        }
+
+        .animated-btn-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, #ffcc00, #ff0055);
+            animation: rotateBorder 3s linear infinite;
+        }
+
+        @keyframes rotateBorder {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .btn-link {
+            position: relative;
+            z-index: 2;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #ffcc00;
-            color: #000000;
+            background-color: #121218;
+            color: #ffcc00;
             text-decoration: none;
             font-family: 'Teko', sans-serif;
             font-size: 24px;
             padding: 12px;
-            margin-bottom: 12px;
-            border-radius: 12px;
+            border-radius: 10px;
             font-weight: 600;
-            box-shadow: inset 0 -4px 0px rgba(0, 0, 0, 0.15);
-            transition: transform 0.1s ease;
+            transition: all 0.2s ease;
             cursor: pointer;
             border: none;
             width: 100%;
+            letter-spacing: 1px;
         }
 
-        .btn-link:active {
-            transform: scale(0.98);
+        .btn-link:hover, .btn-link:active {
+            background-color: #ffcc00;
+            color: #000000;
+            transform: scale(0.99);
         }
 
         .btn-link i {
@@ -91,7 +136,7 @@
             font-size: 18px;
         }
 
-        /* Payment Pop-up (Modal) Styles */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -100,22 +145,22 @@
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.8);
+            background-color: rgba(0,0,0,0.85);
             justify-content: center;
             align-items: center;
             padding: 15px;
-            box-sizing: border-box;
+            backdrop-filter: blur(4px);
         }
 
         .modal-content {
-            background-color: #111111;
-            border: 3px solid #e2136e; /* bKash Color */
+            background-color: #121218;
+            border: 2px solid #e2136e; /* bKash Color */
             padding: 25px;
             border-radius: 15px;
             max-width: 400px;
             width: 100%;
             text-align: center;
-            box-shadow: 0 0 25px rgba(226, 19, 110, 0.5);
+            box-shadow: 0 0 30px rgba(226, 19, 110, 0.4);
             position: relative;
         }
 
@@ -131,7 +176,7 @@
         }
 
         .payment-instructions {
-            background: #222;
+            background: #1c1c24;
             padding: 12px;
             border-radius: 8px;
             font-size: 14px;
@@ -139,6 +184,7 @@
             margin-bottom: 20px;
             text-align: left;
             border-left: 4px solid #ffcc00;
+            color: #e0e0e0;
         }
 
         .payment-instructions strong {
@@ -150,11 +196,10 @@
             padding: 12px;
             margin-bottom: 15px;
             border-radius: 8px;
-            border: 1px solid #444;
-            background-color: #222;
+            border: 1px solid #333;
+            background-color: #1a1a22;
             color: #fff;
             font-size: 15px;
-            box-sizing: border-box;
         }
 
         .modal input:focus {
@@ -167,12 +212,17 @@
             color: white;
             border: none;
             padding: 12px 25px;
-            font-size: 18px;
+            font-size: 20px;
             font-family: 'Teko', sans-serif;
             border-radius: 8px;
             cursor: pointer;
             width: 100%;
             letter-spacing: 1px;
+            transition: background 0.2s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #c40f5d;
         }
 
         .btn-close {
@@ -202,15 +252,27 @@
 
         <div class="title-bar">MY ALL FILES DOWNLOAD BUTTON</div>
 
-        <button class="btn-link" onclick="openPayment('Wallhack FFmax', '80')"><i class="fa-solid fa-download"></i> DOWNLOAD Wallhack FFmax</button>
+        <div class="btn-list">
+            <div class="animated-btn-wrapper">
+                <button class="btn-link" onclick="openPayment('Wallhack FFmax', '80')"><i class="fa-solid fa-download"></i> DOWNLOAD Wallhack FFmax</button>
+            </div>
 
-        <button class="btn-link" onclick="openPayment('Hologram FFmax', '100')"><i class="fa-solid fa-download"></i> DOWNLOAD Hologram FFmax</button>
+            <div class="animated-btn-wrapper">
+                <button class="btn-link" onclick="openPayment('Hologram FFmax', '100')"><i class="fa-solid fa-download"></i> DOWNLOAD Hologram FFmax</button>
+            </div>
 
-        <button class="btn-link" onclick="openPayment('Fake Ninja', '50')"><i class="fa-solid fa-download"></i> DOWNLOAD Fake Ninja</button>
+            <div class="animated-btn-wrapper">
+                <button class="btn-link" onclick="openPayment('Fake Ninja', '50')"><i class="fa-solid fa-download"></i> DOWNLOAD Fake Ninja</button>
+            </div>
 
-        <button class="btn-link" onclick="openPayment('FF Proxy', '40')"><i class="fa-solid fa-download"></i> DOWNLOAD FF Proxy</button>
+            <div class="animated-btn-wrapper">
+                <button class="btn-link" onclick="openPayment('FF Proxy', '40')"><i class="fa-solid fa-download"></i> DOWNLOAD FF Proxy</button>
+            </div>
 
-        <button class="btn-link" onclick="openPayment('Dress Glitch', '20')"><i class="fa-solid fa-download"></i> DOWNLOAD Dress Glitch</button>
+            <div class="animated-btn-wrapper">
+                <button class="btn-link" onclick="openPayment('Dress Glitch', '20')"><i class="fa-solid fa-download"></i> DOWNLOAD Dress Glitch</button>
+            </div>
+        </div>
     </div>
 
     <!-- বিকাশ পেমেন্ট পপ-আপ বক্স -->
@@ -259,7 +321,6 @@
                 return;
             }
 
-            // তোমার হোয়াটসঅ্যাপ নাম্বারটি কান্ট্রি কোডসহ বসানো হয়েছে
             var whatsappNumber = "8801920312083"; 
             
             var textMessage = "Hello Nesar, I want to buy a file.%0A%0A" +

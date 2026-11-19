@@ -1,130 +1,151 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="bn">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Gaming With Nesar | Premium Gaming Downloads</title>
-<meta name="description" content="Gaming With Nesar - Premium Gaming Downloads">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090914">
+<title>NESAR DIGITAL STORE — Premium Digital Products</title>
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;font-family:Arial,sans-serif;
- background:#08080c;color:#fff;
- background-image:radial-gradient(circle at top,#1b1b28,#08080c);
-}
-#loader{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;
-background:#08080c;z-index:9999;font-size:2rem}
-.wrapper{max-width:460px;margin:auto;padding:20px}
-.hero{text-align:center}
-.hero img{width:180px;border-radius:20px;box-shadow:0 0 30px rgba(255,30,60,.5)}
-.badge{color:#77ff99}
-.stats{display:flex;justify-content:space-between;margin:20px 0}
-.stat{background:#121218;padding:12px;border-radius:12px;width:31%;text-align:center}
-.card{
-background:#121218;border:1px solid #ff1e3c;border-radius:18px;
-padding:18px;margin:16px 0;box-shadow:0 0 16px rgba(255,30,60,.2)
-}
-button{
-width:100%;padding:12px;border:none;border-radius:10px;
-background:#ff1e3c;color:#fff;font-weight:bold;cursor:pointer
-}
-footer{text-align:center;color:#999;padding:30px 0}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);
-justify-content:center;align-items:center;padding:20px}
-.modal-content{
-background:#121218;border:2px solid #ff1e3c;border-radius:16px;
-padding:20px;max-width:400px;width:100%
-}
-input{width:100%;padding:10px;margin:8px 0;background:#1a1a22;color:#fff;border:1px solid #333;border-radius:8px}
-.close{float:right;cursor:pointer;font-size:24px}
+:root{--bg:#080811;--panel:#11111f;--panel2:#17172a;--text:#f5f4ff;--muted:#a6a4bd;--purple:#9b6cff;--cyan:#42d9ff;--line:#29283f;--good:#65e6b1}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 12% 0%,#21123e 0,transparent 36%),radial-gradient(ellipse at 90% 10%,#10243b 0,transparent 28%),var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.wrap{max-width:1120px;margin:auto;padding:0 18px}
+header{position:sticky;top:0;z-index:10;background:#090914df;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:1px}.brandmark{width:39px;height:39px;border-radius:13px;background:linear-gradient(135deg,var(--purple),#3bcbff);display:grid;place-items:center;box-shadow:0 0 25px #9b6cff55}.brandmark svg{width:25px}
+.brand small{display:block;color:var(--muted);font-size:9px;letter-spacing:2px;margin-top:1px}
+.navright{display:flex;gap:9px}.btn{border:1px solid var(--line);background:var(--panel2);color:var(--text);padding:10px 14px;border-radius:12px;font-weight:700}.btn.primary{border:0;background:linear-gradient(110deg,#8d56f6,#3d9ff5);box-shadow:0 7px 22px #7048d644}.btn:hover,.cat:hover,.product:hover{transform:translateY(-2px)}
+.hero{padding:55px 0 30px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:25px}
+.eyebrow{color:var(--cyan);font-size:12px;font-weight:900;letter-spacing:3px}
+h1{font-size:clamp(34px,6vw,62px);line-height:1.04;margin:12px 0 15px;letter-spacing:-2px}
+.grad{background:linear-gradient(90deg,#c5a5ff,#5de3ff);background-clip:text;color:transparent}
+.hero p{color:var(--muted);line-height:1.8;max-width:570px}
+.heroart{min-height:220px;border:1px solid #ffffff17;border-radius:28px;background:linear-gradient(145deg,#21183a,#111c2d 70%);display:grid;place-items:center;position:relative;overflow:hidden}
+.orb{width:155px;height:155px;border-radius:45px;transform:rotate(-12deg);background:linear-gradient(135deg,#a16cff,#3bcdf2);box-shadow:0 0 75px #8e5dff88;display:grid;place-items:center;font-size:65px}
+.heroart:before,.heroart:after{content:"";position:absolute;border:1px solid #ffffff22;border-radius:50%;width:270px;height:270px}.heroart:after{width:340px;height:340px}
+.sectionhead{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:25px 0 15px}.sectionhead h2{margin:0;font-size:23px}.sectionhead p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.categories{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cat{border:1px solid var(--line);border-radius:20px;padding:20px;background:linear-gradient(145deg,#171528,#10101c);text-align:left;color:var(--text);transition:.2s;min-height:155px;position:relative;overflow:hidden}
+.cat.active{border-color:#9b6cff;box-shadow:0 0 0 1px #9b6cff44,0 12px 35px #8b5cf622}
+.cat .ico{width:49px;height:49px;border-radius:15px;display:grid;place-items:center;font-size:25px;margin-bottom:13px}
+.cat strong{display:block;font-size:16px}.cat small{color:var(--muted);display:block;margin-top:5px}
+.cat:after{content:"";position:absolute;width:90px;height:90px;border-radius:50%;right:-25px;bottom:-35px;background:#a16cff15;filter:blur(3px)}
+.toolbar{display:flex;gap:10px;margin:22px 0 15px}.search{flex:1;min-width:0;background:#11111f;border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:white;outline:none}.search:focus,input:focus,textarea:focus,select:focus{border-color:var(--purple)}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-bottom:50px}
+.product{border:1px solid var(--line);background:linear-gradient(145deg,#151526,#10101a);border-radius:18px;overflow:hidden;transition:.2s}
+.prodimg{height:145px;background:radial-gradient(circle at 50% 40%,#4b2e78,#1a1930 68%);display:grid;place-items:center;font-size:54px;position:relative}
+.prodimg img{width:100%;height:100%;object-fit:cover}
+.prodinfo{padding:15px}.tag{font-size:10px;color:#c9b2ff;background:#8f5df522;padding:5px 8px;border-radius:20px}
+.prodinfo h3{font-size:16px;margin:11px 0 5px}.desc{font-size:12px;color:var(--muted);min-height:34px;line-height:1.5}
+.price{font-weight:900;font-size:19px;margin:12px 0;color:#8eeaff}.prodactions{display:flex;gap:8px}.prodactions button{flex:1;padding:9px 8px;font-size:12px}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:45px 10px;border:1px dashed var(--line);border-radius:16px}
+footer{border-top:1px solid #ffffff12;padding:24px 0 35px;color:var(--muted);font-size:12px;text-align:center}
+.modal{position:fixed;inset:0;background:#000b;z-index:30;display:none;align-items:center;justify-content:center;padding:16px}.modal.show{display:flex}
+.dialog{width:min(540px,100%);max-height:90vh;overflow:auto;background:#121222;border:1px solid #393450;border-radius:20px;padding:20px;box-shadow:0 25px 80px #000a}
+.dialog h2{margin:0 0 15px}.field{display:grid;gap:6px;margin:11px 0}.field label{font-size:12px;color:var(--muted)}.field input,.field textarea,.field select{width:100%;background:#090914;border:1px solid var(--line);color:white;border-radius:10px;padding:11px;outline:none}.field textarea{min-height:75px;resize:vertical}.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.dialogactions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px;flex-wrap:wrap}.hint{font-size:11px;color:var(--muted);line-height:1.6}.adminlist{display:grid;gap:8px;margin-top:15px}.adminitem{display:flex;align-items:center;justify-content:space-between;gap:8px;background:#0b0b16;border:1px solid var(--line);padding:10px;border-radius:11px;font-size:13px}.adminitem span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:35px}.heroart{min-height:175px}.categories{grid-template-columns:1fr}.cat{min-height:105px;padding:15px;display:grid;grid-template-columns:55px 1fr;align-items:center;column-gap:12px}.cat .ico{grid-row:1/3;margin:0}.products{grid-template-columns:repeat(2,1fr)}.prodimg{height:115px}.prodinfo{padding:11px}.prodinfo h3{font-size:14px}.desc{font-size:11px}.nav{height:64px}.brand{font-size:13px}.btn{padding:9px 10px;font-size:12px}}
+@media(max-width:390px){.products{grid-template-columns:1fr}.prodimg{height:155px}.row2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<div id="loader">Gaming With Nesar</div>
+<header><div class="wrap nav">
+  <div class="brand"><div class="brandmark"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><path d="M12 2 3.5 7v10L12 22l8.5-5V7L12 2Z"/><path d="m8 14 4-7 4 7h-8Z"/></svg></div><div>NESAR DIGITAL STORE<small>DIGITAL PREMIUM SHOP</small></div></div>
+  <div class="navright"><button class="btn" id="adminBtn">⚙ Admin</button><button class="btn primary" id="contactBtn">Contact</button></div>
+</div></header>
+<main class="wrap">
+<section class="hero">
+ <div><div class="eyebrow">WELCOME TO NESAR DIGITAL STORE</div><h1>Your Digital<br><span class="grad">Premium Store.</span></h1><p>Premium editing resources, apps and gaming-related digital products — সবকিছু এক জায়গায়। তোমার পছন্দের ক্যাটাগরি বেছে প্রোডাক্ট দেখো।</p><button class="btn primary" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Explore Products&nbsp; →</button></div>
+ <div class="heroart"><div class="orb">✦</div></div>
+</section>
+<section id="shop">
+ <div class="sectionhead"><div><h2>Explore Categories</h2><p>তোমার প্রয়োজনীয় বিভাগ বেছে নাও</p></div></div>
+ <div class="categories" id="categories">
+  <button class="cat active" data-cat="am"><span class="ico" style="background:#1f3c32">✦</span><strong>Alight Motion VIP CC</strong><small>VIP • CC Packs • XML Presets</small></button>
+  <button class="cat" data-cat="apps"><span class="ico" style="background:#352653">▣</span><strong>Editing Premium Apps</strong><small>Premium Apps • Lifetime • Tools</small></button>
+  <button class="cat" data-cat="ff"><span class="ico" style="background:#4a2922">⚡</span><strong>FF Panels</strong><small>Free Fire digital products</small></button>
+ </div>
+ <div class="sectionhead"><div><h2 id="productTitle">Alight Motion VIP CC</h2><p>Available products</p></div></div>
+ <div class="toolbar"><input class="search" id="search" placeholder="প্রোডাক্ট খুঁজুন..."></div>
+ <div class="products" id="products"></div>
+</section>
+</main>
+<footer><div class="wrap">© <span id="year"></span> NESAR DIGITAL STORE · Digital products store<br><span class="hint">প্রোডাক্টের লাইসেন্স ও ব্যবহারের অনুমতি যাচাই করে প্রকাশ করুন।</span></div></footer>
 
-<div class="wrapper">
-<div class="hero">
-<img src="YOUR_LOGO_URL_HERE" alt="Logo">
-<h1>Gaming With Nesar</h1>
-<p class="badge">✔ Trusted Since 2024</p>
-<p>Premium Downloads • Fast Delivery • 24/7 Support</p>
-</div>
+<div class="modal" id="adminModal"><div class="dialog">
+ <h2>⚙ Admin Panel</h2>
+ <div id="loginArea"><p class="hint">ডেমো অ্যাডমিন PIN দিয়ে প্রবেশ করো। লাইভ সাইটে নিরাপদ সার্ভার-ভিত্তিক লগইন লাগবে।</p><div class="field"><label>Admin PIN</label><input id="pin" type="password" inputmode="numeric" placeholder="Demo PIN: 1234"></div><div class="dialogactions"><button class="btn" id="closeLogin">Close</button><button class="btn primary" id="loginBtn">Login</button></div></div>
+ <div id="adminArea" style="display:none">
+  <div class="field"><label>Product name</label><input id="pname" placeholder="যেমন: XML Preset Pack"></div>
+  <div class="row2"><div class="field"><label>Category</label><select id="pcat"><option value="am">Alight Motion VIP CC</option><option value="apps">Editing Premium Apps</option><option value="ff">FF Panels</option></select></div><div class="field"><label>Price (৳)</label><input id="pprice" type="number" min="0" placeholder="যেমন: 150"></div></div>
+  <div class="field"><label>Short details</label><textarea id="pdesc" placeholder="প্রোডাক্ট সম্পর্কে সংক্ষেপে লিখুন"></textarea></div>
+  <div class="row2"><div class="field"><label>Emoji / icon</label><input id="pemoji" placeholder="✨" maxlength="4"></div><div class="field"><label>Image URL (optional)</label><input id="pimage" placeholder="https://..."></div></div>
+  <div class="field"><label>WhatsApp number (country code সহ, শুধু সংখ্যা)</label><input id="phone" placeholder="8801XXXXXXXXX"></div>
+  <div class="hint">এই ডেমোতে প্রোডাক্ট ও নম্বর এই ব্রাউজারের local storage-এ থাকবে। অন্য ফোন/ব্রাউজারে নিজে থেকে sync হবে না।</div>
+  <div class="dialogactions"><button class="btn" id="logoutBtn">Logout</button><button class="btn primary" id="saveBtn">＋ Add Product</button></div>
+  <div class="adminlist" id="adminList"></div>
+ </div>
+</div></div>
 
-<div class="stats">
-<div class="stat"><h3>10K+</h3><small>Downloads</small></div>
-<div class="stat"><h3>5K+</h3><small>Customers</small></div>
-<div class="stat"><h3>24/7</h3><small>Support</small></div>
-</div>
-
-<div class="card">
-<h2>Wallhack FFmax</h2>
-<p>Version: v2.1</p><p>Price: 80 BDT</p>
-<button onclick="openPayment('Wallhack FFmax','80')">DOWNLOAD</button>
-</div>
-
-<div class="card">
-<h2>Hologram FFmax</h2>
-<p>Version: v2.1</p><p>Price: 100 BDT</p>
-<button onclick="openPayment('Hologram FFmax','100')">DOWNLOAD</button>
-</div>
-
-<div class="card">
-<h2>Fake Ninja</h2>
-<p>Version: v2.1</p><p>Price: 50 BDT</p>
-<button onclick="openPayment('Fake Ninja','50')">DOWNLOAD</button>
-</div>
-
-<div class="card">
-<h2>FF Proxy</h2>
-<p>Version: v2.1</p><p>Price: 40 BDT</p>
-<button onclick="openPayment('FF Proxy','40')">DOWNLOAD</button>
-</div>
-
-<div class="card">
-<h2>Dress Glitch</h2>
-<p>Version: v2.1</p><p>Price: 20 BDT</p>
-<button onclick="openPayment('Dress Glitch','20')">DOWNLOAD</button>
-</div>
-
-<footer>
-<p>WhatsApp: +8801920312083</p>
-<p>© 2026 Gaming With Nesar</p>
-</footer>
-</div>
-
-<div id="paymentModal" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closePayment()">&times;</span>
-<h2>bKash Manual Payment</h2>
-<p>Send Money: 01920312083</p>
-<p>Amount: <span id="price">0</span> BDT</p>
-<input type="hidden" id="fileName">
-<input id="number" placeholder="Your bKash Number">
-<input id="txid" placeholder="TxID">
-<button onclick="submitPayment()">SUBMIT ORDER</button>
-</div>
-</div>
-
+<div class="modal" id="checkoutModal"><div class="dialog">
+ <h2>Complete Your Order</h2>
+ <p class="hint" id="checkoutProduct"></p>
+ <div class="field"><label>Payment method</label><input value="bKash (Send Money)" readonly></div>
+ <div style="background:#0b0b16;border:1px solid var(--line);border-radius:12px;padding:13px;margin:12px 0">
+  <div class="hint">Send Money to this number</div><div id="payNumber" style="font-size:22px;font-weight:900;letter-spacing:1px;margin:5px 0">01993167750</div>
+  <button class="btn" type="button" id="copyPayNumber">Copy Number</button>
+ </div>
+ <div class="field"><label>Amount (৳)</label><input id="payAmount" readonly></div>
+ <div class="field"><label>Your mobile number</label><input id="buyerPhone" type="tel" placeholder="01XXXXXXXXX"></div>
+ <div class="field"><label>Transaction ID (TrxID)</label><input id="trxId" placeholder="পেমেন্টের TrxID লিখুন"></div>
+ <div class="hint">সঠিক নম্বরে Send Money করার পর TrxID লিখে অর্ডার জমা দাও। Payment যাচাই না হওয়া পর্যন্ত অর্ডার Pending থাকবে।</div>
+ <div class="dialogactions"><button class="btn" id="cancelCheckout">Cancel</button><button class="btn primary" id="submitCheckout">Submit Order</button></div>
+ <p class="hint" id="checkoutResult"></p>
+</div></div>
 <script>
-window.addEventListener('load',()=>setTimeout(()=>loader.style.display='none',1000));
+const defaults=[
+ {id:1,cat:'am',name:'Alight Motion VIP',price:0,desc:'তোমার নিজের VIP অফার ও বিবরণ এখানে যোগ করো।',emoji:'✦'},
+ {id:2,cat:'am',name:'CC Pack',price:0,desc:'নিজের CC Pack-এর বিস্তারিত এখানে লিখো।',emoji:'🎨'},
+ {id:3,cat:'am',name:'XML Preset Pack',price:0,desc:'নিজের XML ফাইলের প্যাকেজের বিবরণ যোগ করো।',emoji:'📦'},
+ {id:4,cat:'apps',name:'Editing Premium App',price:0,desc:'অ্যাপের নাম, মেয়াদ ও বৈধ লাইসেন্সের তথ্য যোগ করো।',emoji:'📱'},
+ {id:5,cat:'apps',name:'Lifetime Editing Package',price:0,desc:'প্যাকেজের শর্ত ও মেয়াদ স্পষ্ট করে লিখো।',emoji:'♾️'},
+ {id:6,cat:'ff',name:'FF Digital Product',price:0,desc:'তোমার অনুমোদিত Free Fire সম্পর্কিত প্রোডাক্ট যোগ করো।',emoji:'⚡'}
+];
+const key='nesar_store_products_v1', phoneKey='nesar_store_phone_v1';
+let products=JSON.parse(localStorage.getItem(key)||'null')||defaults;
+let active='am', editingId=null;
+const cats={am:'Alight Motion VIP CC',apps:'Editing Premium Apps',ff:'FF Panels'};
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem(key,JSON.stringify(products));render()}
+function render(){
+ $('productTitle').textContent=cats[active];
+ document.querySelectorAll('.cat').forEach(b=>b.classList.toggle('active',b.dataset.cat===active));
+ const q=$('search').value.toLowerCase();
+ const list=products.filter(p=>p.cat===active&&(p.name+' '+p.desc).toLowerCase().includes(q));
+ $('products').innerHTML=list.length?list.map(p=>`<article class="product"><div class="prodimg">${p.image?`<img src="${esc(p.image)}" alt="">`:esc(p.emoji||'✨')}</div><div class="prodinfo"><span class="tag">${cats[p.cat]}</span><h3>${esc(p.name)}</h3><div class="desc">${esc(p.desc)}</div><div class="price">${Number(p.price)>0?'৳'+Number(p.price).toLocaleString('en-US'):'Price on request'}</div><div class="prodactions"><button class="btn primary" onclick="order(${p.id})">Order Now</button><button class="btn" onclick="details(${p.id})">Details</button></div></div></article>`).join(''):'<div class="empty">এই ক্যাটাগরিতে এখনো কোনো প্রোডাক্ট নেই। Admin Panel থেকে যোগ করো।</div>';
+}
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+let selectedProduct=null;
+const paymentNumbers={bKash:'01993167750'};
+function order(id){selectedProduct=products.find(x=>x.id===id);$('checkoutProduct').textContent='Product: '+selectedProduct.name;$('payAmount').value=Number(selectedProduct.price)>0?selectedProduct.price:'Price on request';$('trxId').value='';$('buyerPhone').value='';$('checkoutResult').textContent='';$('payNumber').textContent='01993167750';$('checkoutModal').classList.add('show')}
+function updatePayNumber(){$('payNumber').textContent='01993167750'}
+$('copyPayNumber').onclick=()=>{const n='01993167750';if(n&&navigator.clipboard)navigator.clipboard.writeText(n).then(()=>$('checkoutResult').textContent='Number copied.');else $('checkoutResult').textContent='Number: '+n};
+$('cancelCheckout').onclick=()=>$('checkoutModal').classList.remove('show');
+$('submitCheckout').onclick=()=>{const buyer=$('buyerPhone').value.trim(),trx=$('trxId').value.trim();if(!buyer||!trx){alert('মোবাইল নম্বর ও Transaction ID লিখুন।');return}const orderData={product:selectedProduct.name,amount:selectedProduct.price,payment:'bKash',paymentNumber:'01993167750',buyerPhone:buyer,trxId:trx,status:'Pending',createdAt:new Date().toISOString()};const saved=JSON.parse(localStorage.getItem('nesar_demo_orders')||'[]');saved.unshift(orderData);localStorage.setItem('nesar_demo_orders',JSON.stringify(saved));$('checkoutResult').textContent='Demo order saved on this device. Payment status: Pending. Admin-কে অর্ডার পাঠাতে live database/backend সংযোগ প্রয়োজন।';};
 
-function openPayment(name,price){
-document.getElementById('fileName').value=name;
-document.getElementById('price').innerText=price;
-paymentModal.style.display='flex';
-}
-function closePayment(){paymentModal.style.display='none';}
-function submitPayment(){
-let n=document.getElementById('number').value;
-let t=document.getElementById('txid').value;
-if(!n||!t){alert('Please fill all fields');return;}
-let file=document.getElementById('fileName').value;
-let price=document.getElementById('price').innerText;
-let msg=`Hello Nesar,%0AFile: ${file}%0APrice: ${price} BDT%0AbKash: ${n}%0ATxID: ${t}`;
-window.open(`https://wa.me/8801920312083?text=${msg}`,'_blank');
-closePayment();
-}
+function details(id){const p=products.find(x=>x.id===id);alert(p.name+'\\n\\n'+p.desc+'\\n\\nPrice: '+(p.price?'৳'+p.price:'On request'))}
+document.querySelectorAll('.cat').forEach(b=>b.addEventListener('click',()=>{active=b.dataset.cat;render()}));
+$('search').addEventListener('input',render);$('year').textContent=new Date().getFullYear();
+$('contactBtn').onclick=()=>{const n=localStorage.getItem(phoneKey)||'';if(n)window.open('https://wa.me/'+n,'_blank');else alert('Admin Panel থেকে WhatsApp নম্বর সেট করো।')};
+$('adminBtn').onclick=()=>{$('adminModal').classList.add('show');$('loginArea').style.display='block';$('adminArea').style.display='none'};
+$('closeLogin').onclick=()=>$('adminModal').classList.remove('show');
+$('adminModal').addEventListener('click',e=>{if(e.target===$('adminModal'))$('adminModal').classList.remove('show')});
+$('loginBtn').onclick=()=>{if($('pin').value==='1234'){$('loginArea').style.display='none';$('adminArea').style.display='block';$('phone').value=localStorage.getItem(phoneKey)||'';adminRender()}else alert('ভুল PIN। ডেমো PIN হলো 1234।')};
+$('logoutBtn').onclick=()=>{$('adminArea').style.display='none';$('loginArea').style.display='block';$('pin').value=''};
+function clearForm(){$('pname').value='';$('pprice').value='';$('pdesc').value='';$('pemoji').value='✨';$('pimage').value='';editingId=null;$('saveBtn').textContent='＋ Add Product'}
+$('saveBtn').onclick=()=>{const name=$('pname').value.trim();if(!name){alert('প্রোডাক্টের নাম লিখো');return}const obj={id:editingId||Date.now(),name,cat:$('pcat').value,price:Number($('pprice').value)||0,desc:$('pdesc').value.trim(),emoji:$('pemoji').value.trim()||'✨',image:$('pimage').value.trim()};if(editingId)products=products.map(p=>p.id===editingId?obj:p);else products.unshift(obj);localStorage.setItem(phoneKey,$('phone').value.replace(/\D/g,''));save();clearForm();adminRender()};
+function adminRender(){$('adminList').innerHTML='<b style="font-size:13px;margin-top:10px">Manage products</b>'+products.map(p=>`<div class="adminitem"><span>${esc(p.name)} · ${cats[p.cat]}</span><div style="display:flex;gap:5px"><button class="btn" onclick="editProduct(${p.id})">Edit</button><button class="btn" onclick="deleteProduct(${p.id})">Delete</button></div></div>`).join('')}
+window.editProduct=id=>{const p=products.find(x=>x.id===id);editingId=id;$('pname').value=p.name;$('pcat').value=p.cat;$('pprice').value=p.price;$('pdesc').value=p.desc;$('pemoji').value=p.emoji||'';$('pimage').value=p.image||'';$('saveBtn').textContent='Save Changes';window.scrollTo({top:0,behavior:'smooth'})};
+window.deleteProduct=id=>{if(confirm('এই প্রোডাক্টটি মুছে ফেলবে?')){products=products.filter(p=>p.id!==id);save();adminRender()}};
+render();
 </script>
-</body>
-    </html>
-    
+</body></html>

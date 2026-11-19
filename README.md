@@ -1,1 +1,1 @@
-# gaming-with-nesar
+# nesar-digital-store
